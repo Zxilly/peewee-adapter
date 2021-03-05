@@ -32,7 +32,7 @@ import peewee
 DATABAEE = peewee.SqliteDatabase('db.sqlite3')
 adapter = casbin_peewee_adapter.Adapter(database=DATABAEE)
 
-e = casbin.Enforcer('path/to/model.conf', adapter, True)
+e = casbin.Enforcer('path/to/model.conf', adapter)
 
 sub = "alice"  # the user that wants to access a resource.
 obj = "data1"  # the resource that is going to be accessed.
@@ -45,6 +45,8 @@ else:
     # deny the request, show an error
     pass
 ```
+
+You should provide you datebase connection info in `settings.yml`
 
 
 ### Getting Help
